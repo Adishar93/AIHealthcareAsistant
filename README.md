@@ -31,3 +31,9 @@ rest
 
 [Link to Backend repo](https://github.com/Adishar93/PrescriptionValidator)
 
+![Landing Page](https://github.com/Adishar93/AIHealthcareAsistant/assets/39119745/93a71950-50fa-451e-acd6-e34cfed14c81)
+![Login Page](https://github.com/Adishar93/AIHealthcareAsistant/assets/39119745/686a8de4-26b4-48a4-8fc9-1fe96010b425)
+![Doctor can record appointment, enter prescription and verify using the model if there are any potential flags in the prescription:](https://github.com/Adishar93/AIHealthcareAsistant/assets/39119745/1d81bd9d-9066-435a-866a-a625fb970668)
+
+
+
