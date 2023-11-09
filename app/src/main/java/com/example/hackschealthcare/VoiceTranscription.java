@@ -5,11 +5,14 @@ import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.FixedCredentialsProvider;
 import com.google.auth.oauth2.GoogleCredentials;
@@ -18,21 +21,23 @@ import com.google.protobuf.ByteString;
 
 import java.io.FileInputStream;
 
-public class MainActivity2 extends AppCompatActivity {
+public class VoiceTranscription extends AppCompatActivity {
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
     private MediaRecorder mediaRecorder;
     private boolean isRecording = false;
 
     private Button recordButton;
     private TextView transcriptTextView;
-
+    private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        setContentView(R.layout.activity_voice_transcription);
 
         recordButton = findViewById(R.id.recordButton);
         transcriptTextView = findViewById(R.id.transcriptTextView);
+        progressBar = findViewById(R.id.progressBar);
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, REQUEST_RECORD_AUDIO_PERMISSION);
@@ -113,7 +118,7 @@ public class MainActivity2 extends AppCompatActivity {
 
                 for (SpeechRecognitionResult result : response.getResultsList()) {
                     // Append the transcription to the result
-                    transcriptBuilder.append(result.getAlternatives(0).getTranscript()).append("\n");
+                    transcriptBuilder.append(result.getAlternatives(0).getTranscript()).append(" ");
                 }
 
                 return transcriptBuilder.toString();
@@ -135,5 +140,18 @@ public class MainActivity2 extends AppCompatActivity {
                 // Permission denied
             }
         }
+    }
+
+    public void onVerifyButtonClicked(View view) {
+        // Get the transcript and prescription strings from your UI elements
+        String transcript = transcriptTextView.getText().toString();
+        System.out.println("Transcript:"+transcript);
+        TextInputEditText prescription = findViewById(R.id.prescriptionEditText);
+        String prescriptionTxt = prescription.getText().toString();
+        System.out.println("Prescription:"+prescriptionTxt);
+        TextView resultText = findViewById(R.id.ResultTextView);
+
+        // Start the AsyncTask for the API request
+        new ApiRequestTask(progressBar,resultText).execute(transcript, prescriptionTxt);
     }
 }

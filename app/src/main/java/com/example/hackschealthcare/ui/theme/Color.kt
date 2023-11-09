@@ -1,4 +1,4 @@
-package com.example.hackschealthcare.ui.theme
+package com.example.hacksc.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

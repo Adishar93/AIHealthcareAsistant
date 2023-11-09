@@ -1,6 +1,7 @@
 package com.example.hackschealthcare;
 import android.os.AsyncTask;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.io.OutputStream;
 import java.io.InputStream;
@@ -12,9 +13,11 @@ import java.net.URL;
 public class ApiRequestTask extends AsyncTask<String, Void, String> {
     private final String apiEndpoint = "https://verify-prescription-service-ire7dc72sa-uc.a.run.app/verify-prescription";
     private final ProgressBar progressBar;
+    private final TextView text;
 
-    public ApiRequestTask(ProgressBar progressBar) {
+    public ApiRequestTask(ProgressBar progressBar, TextView text) {
         this.progressBar = progressBar;
+        this.text = text;
     }
 
     @Override
@@ -28,10 +31,12 @@ public class ApiRequestTask extends AsyncTask<String, Void, String> {
         try {
             URL url = new URL(apiEndpoint);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setConnectTimeout(500000000);
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type", "application/json");
 
             String jsonInputString = "{\"transcript\": \"" + params[0] + "\", \"prescription\": \"" + params[1] + "\"}";
+            System.out.println("JSON XXXX:"+jsonInputString);
 
             // Send the POST request with JSON data
             connection.setDoOutput(true);
@@ -65,9 +70,11 @@ public class ApiRequestTask extends AsyncTask<String, Void, String> {
 
         if (result != null) {
             // Process the API response here
-            Toast.makeText(progressBar.getContext(), "API Response: " + result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(progressBar.getContext(), "API Response: " + result, Toast.LENGTH_LONG).show();
+            text.setText(result);
         } else {
             // Handle the error
+            System.out.println("API error");
             Toast.makeText(progressBar.getContext(), "API Request Failed", Toast.LENGTH_SHORT).show();
         }
     }

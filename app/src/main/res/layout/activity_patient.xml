@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/image"
+        android:scaleType="centerCrop"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="8dp"
+        android:alpha="0.92">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="16dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textViewLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/welcome_message"
+                android:textSize="24sp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:background="@color/white"
+                android:layout_marginBottom="20dp"
+                android:alpha="0.8"
+                android:padding="16dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonPatient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/button_patient_text"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                app:strokeColor="@color/black"
+                app:strokeWidth="1dp"
+                android:layout_marginBottom="10dp"
+                android:alpha="0.8"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonHealthcareWorker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/button_healthcare_worker_text"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                app:strokeColor="@color/black"
+                app:strokeWidth="1dp"
+                android:layout_marginBottom="10dp"
+                android:alpha="0.8"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonDoctor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/button_doctor_text"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                app:strokeColor="@color/black"
+                app:strokeWidth="1dp"
+                android:alpha="0.8"/>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</RelativeLayout>
