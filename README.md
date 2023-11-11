@@ -1,4 +1,4 @@
-# hacksc AIHealthcareAssistant
+# HackSC AI Healthcare Assistant
 ## Inspiration
 The project draws its inspiration from a commitment to enhance patient safety.
 
