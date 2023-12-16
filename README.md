@@ -2,9 +2,9 @@
 ## Inspiration
 The project draws its inspiration from a commitment to enhance patient safety.
 
-It aims to reduce errors during prescription of drugs especially that could happen due to communication barriers or human erros and also provides accessibility to people from different communities who may speak different language from the available physicians. It is an assistant for doctors, patients and community workers alike.
+It aims to reduce errors during prescription of drugs especially that could happen due to communication barriers or human errors and also provides accessibility to people from different communities who may speak different language from the available physicians. It is an assistant for doctors, patients and community workers alike.
 
-We built it using Android SDK and the backend is written with Python & Flask. We also integrated Redis to store patient and Doctor details and additionally, make use of Google CLoud technology to deploy our backend system.
+We built it using Android SDK and the backend is written with Python & Flask. We also integrated Redis to store patient and doctor details and additionally, we make use of Google Cloud technology to deploy our backend system.
 
 ## Challenges we ran into
 Limited public datasets for the medicine chemical composition. Also, lack of patient and doctor appointment transcript datasets, which made it difficult to create a model that could compare the appointment transcript and the prescription.
